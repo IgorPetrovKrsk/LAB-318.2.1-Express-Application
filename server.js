@@ -1,6 +1,4 @@
 import express from 'express';
-import path from 'path';
-import { fileURLToPath } from 'url';
 
 import responseTime from 'response-time';
 import morgan from 'morgan';
@@ -11,11 +9,6 @@ const app = express();
 const PORT = 3000;
 
 app.set("view engine", "ejs");
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-app.set('views', path.join(__dirname, 'views'));
-app.use('/images', express.static(path.join(__dirname, '/images')));
 
 //part 2 middleware
 app.use(responseTime((req, res,time) => {
